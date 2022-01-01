@@ -1,0 +1,85 @@
+.navbar {
+  height: 100px;
+  background-color: #0404c4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar ul li {
+  display: inline;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.navbar ul {
+  padding-right: 65px;
+  margin: 0px;
+}
+.navbar a {
+  text-decoration: none;
+}
+
+.navbar li:hover {
+  color: #00b627;
+}
+
+.navbar img {
+  padding-left: 40px;
+}
+
+.introContainer {
+  background-color: #0404c4;
+  height: 480px;
+}
+
+.introSection {
+  display: flex;
+  padding-top: 100px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.introSection h1 {
+  color: white;
+  font-size: 60px;
+  font-family: "PT Sans", sans-serif;
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 700;
+}
+
+.introSection p {
+  color: #a5a5a5;
+  padding-top: 10px;
+  text-align: center;
+  width: 600px;
+}
+
+.searchForm {
+  display: flex;
+  padding: 10px 2px 0 2px;
+  justify-content: center;
+}
+
+.expBtn {
+  background-color: #151965;
+  padding: 10px;
+  color: white;
+  border: none;
+  width: 100px;
+  border-radius: 8px;
+}
+.expBtn:hover {
+  background-color: #3f05aa;
+  color: #a5a5a5;
+}
+
+.btn-outline-success {
+  color: #00ff37;
+  border-color: #00ff89;
+}
+.btn-outline-success:hover {
+  background-color: #00b627;
+}
