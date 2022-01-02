@@ -1,35 +1,3 @@
-.navbar {
-  height: 100px;
-  background-color: #0404c4;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.navbar ul li {
-  display: inline;
-  color: white;
-  padding: 20px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.navbar ul {
-  padding-right: 65px;
-  margin: 0px;
-}
-.navbar a {
-  text-decoration: none;
-}
-
-.navbar li:hover {
-  color: #00b627;
-}
-
-.navbar img {
-  padding-left: 40px;
-}
-
 .introContainer {
   background-color: #0404c4;
   height: 480px;

@@ -1,28 +1,10 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import "./styles/Home.css";
 import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
     <>
-      <div className="navbar">
-        <img src="#" alt="something" />
-        <ul>
-          <Link to="/">
-            <li>Home</li>
-          </Link>
-          <Link to="/explore">
-            <li>Explore</li>
-          </Link>
-          <Link to="/about">
-            <li>About</li>
-          </Link>
-          <Link to="/contact">
-            <li>Contact</li>
-          </Link>
-        </ul>
-      </div>
-
       <div className="introContainer">
         <div className="introSection">
           <h1>CRYPTO EXPERT</h1>
@@ -33,7 +15,9 @@ export default function Home() {
         </div>
 
         <div className="searchForm">
-          <button className="expBtn mx-2">Explore</button>
+          <Link to="/analysis">
+            <button className="expBtn mx-2">Explore</button>
+          </Link>
           <form class="d-flex">
             <input
               class="form-control me-1"
