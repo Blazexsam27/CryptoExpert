@@ -1,33 +1,61 @@
-.analysisIntroContainer {
-  display: flex;
-  justify-content: start;
-  padding: 40px 5px 0 60px;
-  margin-top: 30px;
+.analysisPageNavbar {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    63deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(8, 74, 203, 1) 0%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  height: 50px;
 }
 
-.analysisIntroContainer p {
-  padding-left: 10px;
-  font-size: 20px;
+.analysisPageNavbar img {
+  padding: 6px 0 0px 37px;
+  width: 80px;
+  height: 40px;
 }
 
-.analysisStatsContainer {
-  display: flex;
-  padding-top: 10px;
-  justify-content: start;
-  padding: 10px 5px 0 60px;
-}
-
-.analysisStatsGraph {
-  display: flex;
-  border-radius: 5px;
-  background-color: aquamarine;
-  justify-content: start;
-  margin: 10px 60px 0 60px;
+.analysisBackground {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    63deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(8, 74, 203, 1) 0%,
+    rgba(0, 212, 255, 1) 100%
+  );
   height: 400px;
 }
 
-.analysisInfoDesc {
+.analysisHeading {
   display: flex;
-  justify-content: start;
-  padding: 10px 5px 0 60px;
+  position: relative;
+  padding-left: 350px;
+}
+
+.analysisHeading h3 {
+  font-size: 36px;
+  color: white;
+  padding: 120px 20px 5px 0;
+  font-family: "PT Sans", sans-serif;
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 600;
+}
+
+.analysisHeading img {
+  width: 50px;
+  height: 50px;
+  top: 20%;
+}
+
+.analysisGraphContainer {
+  position: absolute;
+  top: 32%;
+  left: 19%;
+  background-color: white;
+  height: 420px;
+  width: 960px;
+  border-radius: 6px;
+  box-shadow: -2px 4px 37px -8px rgba(82, 72, 72, 0.7);
+  -webkit-box-shadow: -2px 4px 37px -8px rgba(82, 72, 72, 0.7);
+  -moz-box-shadow: -2px 4px 37px -8px rgba(82, 72, 72, 0.7);
 }

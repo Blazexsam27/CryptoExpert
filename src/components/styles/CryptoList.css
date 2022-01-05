@@ -1,12 +1,19 @@
 .cryptoListContainer {
   display: flex;
   justify-content: center;
-  padding: 50px;
+  padding: 20px;
   width: 100%;
 }
 
+.cardLink {
+  text-decoration: none;
+}
+
 .card {
+  display: flex;
+  align-items: center;
   cursor: pointer;
+  width: 100%;
   background: #ffffff;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(0px);
@@ -14,11 +21,22 @@
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   margin: 10px 10px 2px 10px;
-  padding: 90px;
+  padding: 50px;
+  text-align: center;
+}
+
+.card div {
+  width: 100%;
+}
+
+.card img {
+  width: 100px;
+  height: 100px;
 }
 
 .card:hover {
-  box-shadow: 0 8px 32px 0 rgba(27, 42, 248, 0.466);
+  box-shadow: 0 20px 77px 0 rgba(27, 42, 248, 0.466);
+  transition: 0.3s;
 }
 
 .column {

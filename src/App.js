@@ -9,9 +9,11 @@ import Analysis from "./components/Analysis";
 function App() {
   return (
     <>
-      <Navbar />
       <Routes>
-        <Route path="/" element={[<Home />, <CryptoList />]}></Route>
+        <Route
+          path="/"
+          element={[<Navbar />, <Home />, <CryptoList />]}
+        ></Route>
         <Route path="/analysis" element={<Analysis />}></Route>
       </Routes>
     </>

@@ -15,17 +15,15 @@ export default function Home() {
         </div>
 
         <div className="searchForm">
-          <Link to="/analysis">
-            <button className="expBtn mx-2">Explore</button>
-          </Link>
-          <form class="d-flex">
+          <button className="expBtn mx-2">Explore</button>
+          <form className="d-flex">
             <input
-              class="form-control me-1"
+              className="form-control me-1"
               type="search"
               placeholder="Search"
               aria-label="Search"
             />
-            <button class="btn btn-outline-success" type="submit">
+            <button className="btn btn-outline-success" type="submit">
               Search
             </button>
           </form>
