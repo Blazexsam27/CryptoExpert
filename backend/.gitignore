@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/cryptoexpert-key.json
 /.pnp
 .pnp.js
 
