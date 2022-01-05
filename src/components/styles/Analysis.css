@@ -29,22 +29,39 @@
 .analysisHeading {
   display: flex;
   position: relative;
-  padding-left: 350px;
+  padding-left: 297px;
+  justify-content: start;
 }
 
-.analysisHeading h3 {
+.summaryContainer {
+  display: flex;
+  justify-content: start;
+  background-color: white;
+  height: 140px;
+  width: 960px;
+  left: 19%;
+  top: 29px;
+  position: relative;
+  box-shadow: -2px 4px 37px -8px rgb(82 72 72 / 70%);
+  -webkit-box-shadow: -2px 4px 37px -8px rgb(82 72 72 / 70%);
+  border-radius: 10px;
+}
+
+.summaryContainer h3 {
   font-size: 36px;
-  color: white;
-  padding: 120px 20px 5px 0;
+  color: black;
+  padding: 20px 15px 0 0px;
   font-family: "PT Sans", sans-serif;
   font-family: "Titillium Web", sans-serif;
   font-weight: 600;
 }
 
-.analysisHeading img {
+.summaryContainer img {
   width: 50px;
   height: 50px;
-  top: 20%;
+  margin: 17px 2px 0 16px;
+  box-shadow: 16px -9px 153px -63px rgba(0, 0, 0, 1);
+  -webkit-box-shadow: 16px -9px 153px -63px rgba(0, 0, 0, 1);
 }
 
 .analysisGraphContainer {
@@ -54,7 +71,7 @@
   background-color: white;
   height: 420px;
   width: 960px;
-  border-radius: 6px;
+  border-radius: 10px;
   box-shadow: -2px 4px 37px -8px rgba(82, 72, 72, 0.7);
   -webkit-box-shadow: -2px 4px 37px -8px rgba(82, 72, 72, 0.7);
   -moz-box-shadow: -2px 4px 37px -8px rgba(82, 72, 72, 0.7);

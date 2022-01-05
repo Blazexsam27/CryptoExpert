@@ -1,21 +1,24 @@
 import { React, useEffect, useState } from "react";
 import "./styles/Analysis.css";
 import { Link, useLocation } from "react-router-dom";
-import axios from "axios";
+import * as services from "../services.js";
 
 export default function Analysis() {
   const { search } = useLocation();
   const cryptoId = new URLSearchParams(search).get("args");
   const [cryptoStats, setCryptoStats] = useState([]);
+  const [cryptoMarketData, setCryptoMarketData] = useState([]);
+
   useEffect(async () => {
-    await axios
-      .get(
-        ` https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${cryptoId.toLowerCase()}&order=market_cap_desc&per_page=100&page=1&sparkline=false`
-      )
-      .then((result) => {
-        setCryptoStats(result.data);
-      });
+    services.getCryptoStats(cryptoId.toLowerCase()).then((result) => {
+      setCryptoStats(result.data);
+    });
+
+    services.getCryptoMarketData(cryptoId.toLowerCase()).then((result) => {
+      setCryptoMarketData(result.data);
+    });
   }, []);
+
   return (
     <>
       <div className="analysisPageNavbar">
@@ -24,7 +27,7 @@ export default function Analysis() {
         </Link>
       </div>
       <div className="analysisBackground">
-        <div className="analysisHeading">
+        <div className="summaryContainer">
           <img
             src={cryptoStats.length < 1 ? "" : cryptoStats[0].image}
             alt="Logo"
@@ -32,8 +35,14 @@ export default function Analysis() {
           <h3>{cryptoStats.length < 1 ? "Loading" : cryptoStats[0].name}</h3>
         </div>
       </div>
+
       <div className="analysisGraphContainer">
-        <h1>{cryptoStats.length < 1 ? "Loading" : cryptoStats[0].name}</h1>
+        <h1>
+          {cryptoMarketData.length < 1
+            ? "Loading"
+            : "₹ " +
+              cryptoMarketData.prices[cryptoMarketData.prices.length - 1][1]}
+        </h1>
       </div>
     </>
   );

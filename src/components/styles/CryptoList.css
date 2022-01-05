@@ -25,6 +25,12 @@
   text-align: center;
 }
 
+.spinner-grow {
+  animation: 1s linear infinite spinner-grow;
+  width: 4rem;
+  height: 4rem;
+}
+
 .card div {
   width: 100%;
 }
