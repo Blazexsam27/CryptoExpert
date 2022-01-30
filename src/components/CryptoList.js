@@ -3,6 +3,7 @@ import "./styles/CryptoList.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import * as services from "../services.js";
+import Loading from "./Loading.js";
 
 export default function CryptoList() {
   const [cryptoList, setcryptoList] = useState([]);
@@ -11,10 +12,6 @@ export default function CryptoList() {
     await axios.get("/cryptoList").then((result) => {
       setcryptoList(result.data);
     });
-    //iterate over each crypto name and create a new object.
-    // services.getCryptoStats(cryptoId.toLowerCase()).then((result) => {
-    //   setCryptoStats(result.data);
-    // });
   }, []);
   return (
     <>
@@ -23,9 +20,7 @@ export default function CryptoList() {
       </div>
       <div className="cryptoListContainer row">
         {cryptoList.length < 1 ? (
-          <div class="spinner-grow text-info" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div>
+          <Loading></Loading>
         ) : (
           cryptoList.map((element) => {
             return (

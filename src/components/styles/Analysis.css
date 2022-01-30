@@ -45,6 +45,15 @@
   box-shadow: -2px 4px 37px -8px rgb(82 72 72 / 70%);
   -webkit-box-shadow: -2px 4px 37px -8px rgb(82 72 72 / 70%);
   border-radius: 10px;
+  flex-direction: column;
+}
+
+.summaryContainer div {
+  display: inline-flex;
+}
+
+.summaryContainer #cryptoprice {
+  padding: 3px 17px;
 }
 
 .summaryContainer h3 {
@@ -69,9 +78,13 @@
   top: 32%;
   left: 19%;
   background-color: white;
-  height: 420px;
-  width: 960px;
+  height: 480px;
+  width: 965px;
   border-radius: 10px;
+  display: flex;
+  padding: 10px 25px 10px 25px;
+  justify-content: center;
+  align-items: center;
   box-shadow: -2px 4px 37px -8px rgba(82, 72, 72, 0.7);
   -webkit-box-shadow: -2px 4px 37px -8px rgba(82, 72, 72, 0.7);
   -moz-box-shadow: -2px 4px 37px -8px rgba(82, 72, 72, 0.7);
