@@ -35,7 +35,6 @@ export default function CryptoList() {
                   <div className="card">
                     <img src={element.logo} alt="something" />
                     <div>Name : {element.name}</div>
-                    <div>Current Price : {element.price}</div>
                   </div>
                 </Link>
               </div>

@@ -73,15 +73,36 @@
   -webkit-box-shadow: 16px -9px 153px -63px rgba(0, 0, 0, 1);
 }
 
+.filterBtnContainer {
+  display: inline-flex;
+  justify-content: end;
+  width: 100%;
+}
+
+.btn-group {
+  padding: 0 5px;
+  margin-top: 20px;
+}
+
+.btn-group button {
+  background-color: #ff0df3;
+  border: 2px solid white;
+  color: white;
+}
+.btn-group button:hover {
+  color: #14ff14;
+}
+
 .analysisGraphContainer {
   position: absolute;
   top: 32%;
   left: 19%;
   background-color: white;
-  height: 480px;
-  width: 965px;
+  height: 520px;
+  width: 961px;
   border-radius: 10px;
   display: flex;
+  flex-direction: column;
   padding: 10px 25px 10px 25px;
   justify-content: center;
   align-items: center;

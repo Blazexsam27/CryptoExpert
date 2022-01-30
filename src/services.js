@@ -7,8 +7,8 @@ export const getCryptoStats = async (cryptoName) => {
 };
 
 // Add more arguments for futher filteration.
-export const getCryptoMarketData = async (cryptoName) => {
+export const getCryptoMarketData = async (cryptoName, days) => {
   return await axios.get(
-    `https://api.coingecko.com/api/v3/coins/${cryptoName.toLowerCase()}/market_chart?vs_currency=inr&days=6&interval=daily`
+    `https://api.coingecko.com/api/v3/coins/${cryptoName.toLowerCase()}/market_chart?vs_currency=inr&days=${days}&interval=daily`
   );
 };

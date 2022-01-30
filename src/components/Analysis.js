@@ -19,9 +19,13 @@ export default function Analysis() {
   const { search } = useLocation();
   const cryptoId = new URLSearchParams(search).get("args");
   const [cryptoStats, setCryptoStats] = useState([]);
-  const [cryptoMarketData, setCryptoMarketData] = useState([]);
+  const [cryptoMarketData_week, setCryptoMarketData_week] = useState([]); // Get Weekly Data.
+  const [cryptoMarketData_month, setCryptoMarketData_month] = useState([]); // Get Monthly Data.
+  const [priceList, setPriceList] = useState([]);
   const [loading, setLoading] = useState(true);
-  let priceList = [];
+  const [timeCategory, settimeCategory] = useState([]);
+  let priceListTemp = [];
+  const days = [];
 
   Chart.register(
     CategoryScale,
@@ -33,26 +37,6 @@ export default function Analysis() {
     Tooltip
   );
 
-  useEffect(async () => {
-    services.getCryptoStats(cryptoId.toLowerCase()).then((result) => {
-      setCryptoStats(result.data);
-    });
-
-    setLoading(true);
-    await services
-      .getCryptoMarketData(cryptoId.toLowerCase())
-      .then((result) => {
-        setCryptoMarketData(result.data);
-      });
-
-    setLoading(false);
-  }, []);
-
-  if (!loading) {
-    for (let price of cryptoMarketData.prices) priceList.push(price[1]);
-  }
-
-  const days = [];
   const weekDaysMap = new Map([
     ["0", "Sunday"],
     ["1", "Monday"],
@@ -62,14 +46,58 @@ export default function Analysis() {
     ["5", "Friday"],
     ["6", "Saturday"],
   ]);
+
   const pastDays = () => {
     for (let i = 0; i < 7; i++) {
       let d = new Date();
       let day = d.getDay() - i;
-      days.push(weekDaysMap.get(Math.abs(day).toString()));
+      days.unshift(weekDaysMap.get(Math.abs(day).toString()));
+    }
+    settimeCategory(days);
+  };
+
+  const handlePriceList = () => {
+    if (!loading) {
+      for (let price of cryptoMarketData_week.prices) {
+        priceListTemp.push(price[1]);
+      }
+      setPriceList(priceListTemp);
     }
   };
-  pastDays();
+
+  useEffect(async () => {
+    services.getCryptoStats(cryptoId).then((result) => {
+      setCryptoStats(result.data);
+    });
+
+    setLoading(true);
+    await services.getCryptoMarketData(cryptoId, "6").then((result) => {
+      setCryptoMarketData_week(result.data);
+    });
+
+    await services.getCryptoMarketData(cryptoId, "30").then((result) => {
+      setCryptoMarketData_month(result.data);
+    });
+    setLoading(false);
+
+    pastDays();
+  }, []);
+
+  const handleTimeFilter = (filter) => {
+    if (filter == "week") {
+      for (let price of cryptoMarketData_week.prices)
+        priceListTemp.push(price[1]);
+      pastDays();
+    } else {
+      for (let price of cryptoMarketData_month.prices)
+        priceListTemp.push(price[1]);
+      for (let x = 1; x < 31; x++) days.push(x.toString());
+    }
+    settimeCategory(days);
+    setPriceList(priceListTemp);
+  };
+
+  //  LINE CHART
   const options = {
     responsive: true,
     plugins: {
@@ -82,18 +110,18 @@ export default function Analysis() {
       },
     },
   };
-
   const data = {
-    labels: days,
+    labels: timeCategory,
     datasets: [
       {
         label: "price",
         data: priceList,
-        borderColor: "rgb(255, 99, 132)",
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
+        borderColor: "#cc00c2",
+        backgroundColor: "#ff0df3",
       },
     ],
   };
+  // LINE CHART
 
   return (
     <>
@@ -115,10 +143,12 @@ export default function Analysis() {
             </h3>
           </div>
           <h4 id="cryptoprice">
-            {cryptoMarketData.length < 1
+            {cryptoMarketData_week.length < 1
               ? ""
               : "₹ " +
-                cryptoMarketData.prices[cryptoMarketData.prices.length - 1][1]}
+                cryptoMarketData_week.prices[
+                  cryptoMarketData_week.prices.length - 1
+                ][1]}
           </h4>
         </div>
       </div>
@@ -127,7 +157,33 @@ export default function Analysis() {
         {loading ? (
           <Loading></Loading>
         ) : (
-          <Line options={options} data={data}></Line>
+          <>
+            <div className="filterBtnContainer" id="fliterBtnContainer">
+              <div
+                className="btn-group"
+                role="group"
+                aria-label="Basic mixed styles example"
+              >
+                <button
+                  id="weekBtn"
+                  onClick={() => handleTimeFilter("week")}
+                  type="button"
+                  className="btn"
+                >
+                  Week
+                </button>
+                <button
+                  id="monthBtn"
+                  onClick={() => handleTimeFilter("month")}
+                  type="button"
+                  className="btn"
+                >
+                  Month
+                </button>
+              </div>
+            </div>
+            <Line options={options} data={data}></Line>
+          </>
         )}
       </div>
     </>
