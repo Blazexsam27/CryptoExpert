@@ -1,29 +1,11 @@
-.analysisPageNavbar {
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    63deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(8, 74, 203, 1) 0%,
-    rgba(0, 212, 255, 1) 100%
-  );
-  height: 50px;
-}
-
-.analysisPageNavbar img {
-  padding: 6px 0 0px 37px;
-  width: 80px;
-  height: 40px;
-}
-
 .analysisBackground {
-  background: rgb(2, 0, 36);
+  background: rgb(0, 255, 140);
   background: linear-gradient(
-    63deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(8, 74, 203, 1) 0%,
-    rgba(0, 212, 255, 1) 100%
+    90deg,
+    rgba(0, 255, 140, 1) 0%,
+    rgba(0, 228, 255, 1) 100%
   );
-  height: 400px;
+  height: 500px;
 }
 
 .analysisHeading {
@@ -40,7 +22,6 @@
   height: 140px;
   width: 960px;
   left: 19%;
-  top: 29px;
   position: relative;
   box-shadow: -2px 4px 37px -8px rgb(82 72 72 / 70%);
   -webkit-box-shadow: -2px 4px 37px -8px rgb(82 72 72 / 70%);
@@ -95,7 +76,7 @@
 
 .analysisGraphContainer {
   position: absolute;
-  top: 32%;
+  top: 35%;
   left: 19%;
   background-color: white;
   height: 520px;

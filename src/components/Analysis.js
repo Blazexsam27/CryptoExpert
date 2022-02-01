@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from "react";
 import "./styles/Analysis.css";
 import { Link, useLocation } from "react-router-dom";
+import Navbar from "./Navbar.js";
 import Loading from "./Loading.js";
 import * as services from "../services.js";
 import {
@@ -23,7 +24,15 @@ export default function Analysis() {
   const [cryptoMarketData_month, setCryptoMarketData_month] = useState([]); // Get Monthly Data.
   const [priceList, setPriceList] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [timeCategory, settimeCategory] = useState([]);
+  const [timeCategory, settimeCategory] = useState([
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+  ]);
   let priceListTemp = [];
   const days = [];
 
@@ -37,24 +46,21 @@ export default function Analysis() {
     Tooltip
   );
 
-  const weekDaysMap = new Map([
-    ["0", "Sunday"],
-    ["1", "Monday"],
-    ["2", "Tuesday"],
-    ["3", "Wednesday"],
-    ["4", "Thursday"],
-    ["5", "Friday"],
-    ["6", "Saturday"],
-  ]);
+  useEffect(async () => {
+    services.getCryptoStats(cryptoId).then((result) => {
+      setCryptoStats(result.data);
+    });
+    setLoading(true);
+    await services.getCryptoMarketData(cryptoId, "6").then((result) => {
+      setCryptoMarketData_week(result.data);
+    });
 
-  const pastDays = () => {
-    for (let i = 0; i < 7; i++) {
-      let d = new Date();
-      let day = d.getDay() - i;
-      days.unshift(weekDaysMap.get(Math.abs(day).toString()));
-    }
-    settimeCategory(days);
-  };
+    await services.getCryptoMarketData(cryptoId, "30").then((result) => {
+      setCryptoMarketData_month(result.data);
+    });
+    setLoading(false);
+    handlePriceList();
+  }, []);
 
   const handlePriceList = () => {
     if (!loading) {
@@ -65,29 +71,11 @@ export default function Analysis() {
     }
   };
 
-  useEffect(async () => {
-    services.getCryptoStats(cryptoId).then((result) => {
-      setCryptoStats(result.data);
-    });
-
-    setLoading(true);
-    await services.getCryptoMarketData(cryptoId, "6").then((result) => {
-      setCryptoMarketData_week(result.data);
-    });
-
-    await services.getCryptoMarketData(cryptoId, "30").then((result) => {
-      setCryptoMarketData_month(result.data);
-    });
-    setLoading(false);
-
-    pastDays();
-  }, []);
-
   const handleTimeFilter = (filter) => {
     if (filter == "week") {
       for (let price of cryptoMarketData_week.prices)
         priceListTemp.push(price[1]);
-      pastDays();
+      for (let x = 1; x < 8; x++) days.push(x.toString());
     } else {
       for (let price of cryptoMarketData_month.prices)
         priceListTemp.push(price[1]);
@@ -116,8 +104,8 @@ export default function Analysis() {
       {
         label: "price",
         data: priceList,
-        borderColor: "#cc00c2",
-        backgroundColor: "#ff0df3",
+        borderColor: "#00ff08",
+        backgroundColor: "#347d00",
       },
     ],
   };
@@ -125,21 +113,13 @@ export default function Analysis() {
 
   return (
     <>
-      <div className="analysisPageNavbar">
-        <Link to="/">
-          <button className="btn btn-dark">back</button>
-        </Link>
-      </div>
+      <Navbar />
       <div className="analysisBackground">
         <div className="summaryContainer">
           <div>
             {cryptoStats.length < 1 ? "" : <img src={cryptoStats[0].image} />}
             <h3>
-              {cryptoStats.length < 1 ? (
-                <Loading></Loading>
-              ) : (
-                cryptoStats[0].name
-              )}
+              {cryptoStats.length < 1 ? <Loading /> : cryptoStats[0].name}
             </h3>
           </div>
           <h4 id="cryptoprice">
@@ -155,7 +135,7 @@ export default function Analysis() {
 
       <div className="analysisGraphContainer">
         {loading ? (
-          <Loading></Loading>
+          <Loading />
         ) : (
           <>
             <div className="filterBtnContainer" id="fliterBtnContainer">
