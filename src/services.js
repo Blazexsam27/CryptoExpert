@@ -12,3 +12,9 @@ export const getCryptoMarketData = async (cryptoName, days) => {
     `https://api.coingecko.com/api/v3/coins/${cryptoName.toLowerCase()}/market_chart?vs_currency=inr&days=${days}&interval=daily`
   );
 };
+
+export const getCryptoMarketStats = async (cryptoId) => {
+  return await axios.get(
+    `https://api.coingecko.com/api/v3/coins/${cryptoId}/market_chart?vs_currency=inr&days=2&interval=daily`
+  );
+};

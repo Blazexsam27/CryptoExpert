@@ -1,0 +1,27 @@
+.statsHeader {
+  padding: 40px 0 0 0;
+}
+
+.statsContainer {
+  padding-top: 10px;
+  width: 780px;
+  display: flex;
+  justify-content: start;
+}
+
+.statsContainer th {
+  padding: 10px 35px;
+}
+
+.statsContainer tr {
+  padding: 10px 0 0 0;
+}
+
+.rowTitle th {
+  color: grey;
+  font-size: 16px;
+}
+
+.rowElement th {
+  font-size: 14px;
+}

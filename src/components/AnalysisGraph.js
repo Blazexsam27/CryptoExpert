@@ -1,6 +1,5 @@
 import React from "react";
-import Navbar from "./Navbar.js";
-import Loading from "./Loading.js";
+import Stats from "../Stats";
 import "./styles/Analysis.css";
 import {
   CategoryScale,
@@ -14,7 +13,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 
-export default function AnalysisGraph() {
+export default function AnalysisGraph(props) {
   Chart.register(
     CategoryScale,
     LinearScale,
@@ -24,15 +23,6 @@ export default function AnalysisGraph() {
     Title,
     Tooltip
   );
-  const [timeCategory, settimeCategory] = useState([
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-  ]);
 
   const options = {
     responsive: true,
@@ -40,18 +30,14 @@ export default function AnalysisGraph() {
       legend: {
         position: "top",
       },
-      title: {
-        display: true,
-        text: "Crypto Metrics Chart",
-      },
     },
   };
   const data = {
-    labels: timeCategory,
+    labels: props.time,
     datasets: [
       {
         label: "price",
-        data: priceList,
+        data: props.priceList,
         borderColor: "#00ff08",
         backgroundColor: "#347d00",
       },
@@ -61,36 +47,10 @@ export default function AnalysisGraph() {
   return (
     <>
       <div className="analysisGraphContainer">
-        {loading ? (
-          <Loading />
+        {props.priceList.length > 0 ? (
+          <Line options={options} data={data}></Line>
         ) : (
-          <>
-            <div className="filterBtnContainer" id="fliterBtnContainer">
-              <div
-                className="btn-group"
-                role="group"
-                aria-label="Basic mixed styles example"
-              >
-                <button
-                  id="weekBtn"
-                  onClick={() => handleTimeAndPriceFilter("week")}
-                  type="button"
-                  className="btn"
-                >
-                  Week
-                </button>
-                <button
-                  id="monthBtn"
-                  onClick={() => handleTimeAndPriceFilter("month")}
-                  type="button"
-                  className="btn"
-                >
-                  Month
-                </button>
-              </div>
-            </div>
-            <Line options={options} data={data}></Line>
-          </>
+          "Please Select a Time Filter"
         )}
       </div>
     </>

@@ -19,14 +19,11 @@
   display: flex;
   justify-content: start;
   background-color: white;
-  height: 140px;
-  width: 960px;
-  left: 19%;
-  position: relative;
-  box-shadow: -2px 4px 37px -8px rgb(82 72 72 / 70%);
-  -webkit-box-shadow: -2px 4px 37px -8px rgb(82 72 72 / 70%);
-  border-radius: 10px;
+  height: 100px;
+  width: 780px;
   flex-direction: column;
+  position: relative;
+  margin-bottom: 26px;
 }
 
 .summaryContainer div {
@@ -62,11 +59,12 @@
 
 .btn-group {
   padding: 0 5px;
-  margin-top: 20px;
+  margin-top: -40px;
+  margin-right: -4px;
 }
 
 .btn-group button {
-  background-color: #ff0df3;
+  background-color: #01ff9e;
   border: 2px solid white;
   color: white;
 }
@@ -75,19 +73,22 @@
 }
 
 .analysisGraphContainer {
-  position: absolute;
-  top: 35%;
-  left: 19%;
   background-color: white;
-  height: 520px;
-  width: 961px;
+  height: 375px;
+  width: 780px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   padding: 10px 25px 10px 25px;
   justify-content: center;
   align-items: center;
-  box-shadow: -2px 4px 37px -8px rgba(82, 72, 72, 0.7);
-  -webkit-box-shadow: -2px 4px 37px -8px rgba(82, 72, 72, 0.7);
-  -moz-box-shadow: -2px 4px 37px -8px rgba(82, 72, 72, 0.7);
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.summaryAndGraphContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding-left: 140px;
 }
