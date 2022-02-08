@@ -1,5 +1,4 @@
 import React from "react";
-import Stats from "../Stats";
 import "./styles/Analysis.css";
 import {
   CategoryScale,

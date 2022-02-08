@@ -4,7 +4,8 @@ import * as services from "../services.js";
 import Navbar from "./Navbar.js";
 import Loading from "./Loading.js";
 import AnalysisGraph from "./AnalysisGraph.js";
-import Stats from "../Stats.js";
+import Stats from "./Stats.js";
+import AboutCrypto from "./AboutCrypto.js";
 
 export default function Analysis() {
   const { search } = useLocation();
@@ -99,6 +100,7 @@ export default function Analysis() {
         </div>
         <AnalysisGraph time={timeCategory} priceList={priceList} />
         <Stats cryptoId={cryptoId} />
+        <AboutCrypto />
       </div>
     </>
   );
