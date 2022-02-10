@@ -25,6 +25,7 @@ firebaseAdmin.initializeApp({
 
 let db = firebaseAdmin.firestore();
 let cryptoCollection = db.collection("crypto");
+let about_crypto = db.collection("about_crypto");
 
 app.get("/cryptoList", async (request, response) => {
   let crypto = [];
@@ -34,4 +35,16 @@ app.get("/cryptoList", async (request, response) => {
     });
   });
   response.send(crypto);
+});
+
+app.get("/about_crypto", async (request, response) => {
+  let id = request.query.id;
+  let about;
+  await about_crypto
+    .doc(id)
+    .get()
+    .then((response) => {
+      about = response.data();
+    });
+  response.send(about);
 });

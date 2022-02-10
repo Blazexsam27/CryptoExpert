@@ -6,14 +6,17 @@ import Loading from "./Loading.js";
 import AnalysisGraph from "./AnalysisGraph.js";
 import Stats from "./Stats.js";
 import AboutCrypto from "./AboutCrypto.js";
+import axios from "axios";
 
 export default function Analysis() {
   const { search } = useLocation();
   const cryptoId = new URLSearchParams(search).get("args");
+  const cryptoName = new URLSearchParams(search).get("name");
   const [cryptoStats, setCryptoStats] = useState([]);
   const [cryptoMarketData_week, setCryptoMarketData_week] = useState([]); // Get Weekly Data.
   const [cryptoMarketData_month, setCryptoMarketData_month] = useState([]); // Get Monthly Data.
   const [priceList, setPriceList] = useState([]);
+  const [aboutCrypto, setAboutCrypto] = useState({});
   const [timeCategory, settimeCategory] = useState([
     "1",
     "2",
@@ -38,6 +41,12 @@ export default function Analysis() {
     await services.getCryptoMarketData(cryptoId, "30").then((result) => {
       setCryptoMarketData_month(result.data);
     });
+
+    await axios
+      .get("/about_crypto/?id=" + cryptoName.toLowerCase())
+      .then((response) => {
+        setAboutCrypto(response.data);
+      });
   }, []);
 
   const handleTimeAndPriceFilter = (filter) => {
@@ -100,7 +109,7 @@ export default function Analysis() {
         </div>
         <AnalysisGraph time={timeCategory} priceList={priceList} />
         <Stats cryptoId={cryptoId} />
-        <AboutCrypto />
+        <AboutCrypto about={aboutCrypto} />
       </div>
     </>
   );
