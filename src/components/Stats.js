@@ -12,7 +12,6 @@ export default function Stats(props) {
       setMarketCaps(response.data.market_caps);
       setPriceStats(response.data.prices);
       setVolumeStats(response.data.total_volumes);
-      console.log(response.data.prices);
     });
   }, []);
 

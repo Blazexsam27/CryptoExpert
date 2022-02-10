@@ -2,12 +2,10 @@ import { React, useEffect, useState } from "react";
 import "./styles/CryptoList.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import * as services from "../services.js";
 import Loading from "./Loading.js";
 
 export default function CryptoList() {
   const [cryptoList, setcryptoList] = useState([]);
-  const [cryptoStats, setCryptoStats] = useState([]);
   useEffect(async () => {
     await axios.get("/cryptoList").then((result) => {
       setcryptoList(result.data);
@@ -28,7 +26,7 @@ export default function CryptoList() {
                 <Link
                   to={{
                     pathname: "/analysis",
-                    search: `?args=${element.id}`,
+                    search: `?args=${element.id}&name=${element.name}`,
                   }}
                   className="cardLink"
                 >
