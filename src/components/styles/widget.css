@@ -1,0 +1,6 @@
+.spinner-grow {
+  animation: 1.3s ease-out infinite spinner-grow;
+  width: 2rem;
+  height: 2rem;
+  opacity: 0.4;
+}

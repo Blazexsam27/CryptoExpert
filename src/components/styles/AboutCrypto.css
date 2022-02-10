@@ -1,0 +1,22 @@
+.aboutContainer {
+  display: flex;
+  justify-content: start;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 20px 28px 0 28px;
+  margin-top: 20px;
+  width: 780px;
+  height: auto;
+  flex-direction: column;
+}
+
+.descContainer {
+  padding-top: 20px;
+  font-style: italic;
+}
+
+.header {
+  padding-top: 20px;
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 600;
+}

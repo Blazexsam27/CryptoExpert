@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 app.get("/", (req, res) => {
-  res.json({ message: "Hello" });
+  res.json({ message: "Hello There This Port Is For Server" });
 });
 
 app.listen(port, () => {

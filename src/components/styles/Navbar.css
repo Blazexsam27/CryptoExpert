@@ -1,6 +1,6 @@
 .navbar {
   height: 100px;
-  background-color: #0404c4;
+  background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,7 +8,7 @@
 
 .navbar ul li {
   display: inline;
-  color: white;
+  color: black;
   padding: 20px;
   border-radius: 8px;
   cursor: pointer;
