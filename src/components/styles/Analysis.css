@@ -15,6 +15,11 @@
   justify-content: start;
 }
 
+.analysisContainer {
+  display: flex;
+  justify-content: center;
+}
+
 .summaryContainer {
   display: flex;
   justify-content: start;
@@ -90,5 +95,6 @@
   display: flex;
   flex-direction: column;
   justify-content: start;
-  padding-left: 140px;
+  position: relative;
+  left: -150px;
 }

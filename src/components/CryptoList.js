@@ -31,7 +31,7 @@ export default function CryptoList() {
                   className="cardLink"
                 >
                   <div className="card">
-                    <img src={element.logo} alt="something" />
+                    <img src={element.logo} alt="crypto_logo" />
                     <div>Name : {element.name}</div>
                   </div>
                 </Link>

@@ -1,0 +1,27 @@
+.trendingPanelContainer {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 25px;
+  width: 25rem;
+  margin-top: 126px;
+}
+
+.cryptoCard {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.cryptoCardContent {
+  display: flex;
+}
+
+.cryptoCardContent div {
+  display: flex;
+  flex-direction: column;
+}
+.cryptoCardContent img {
+  width: 55px;
+  height: 55px;
+}

@@ -7,6 +7,7 @@ import AnalysisGraph from "./AnalysisGraph.js";
 import Stats from "./Stats.js";
 import AboutCrypto from "./AboutCrypto.js";
 import axios from "axios";
+import TrendingPanel from "./TrendingPanel.js";
 
 export default function Analysis() {
   const { search } = useLocation();
@@ -66,50 +67,53 @@ export default function Analysis() {
   return (
     <>
       <Navbar />
-      <div className="summaryAndGraphContainer">
-        <div className="summaryContainer">
-          <div>
-            {cryptoStats.length < 1 ? "" : <img src={cryptoStats[0].image} />}
-            <h3>
-              {cryptoStats.length < 1 ? <Loading /> : cryptoStats[0].name}
-            </h3>
-          </div>
-          <h4 id="cryptoprice">
-            {cryptoMarketData_week.length < 1
-              ? ""
-              : "₹ " +
-                cryptoMarketData_week.prices[
-                  cryptoMarketData_week.prices.length - 1
-                ][1]}
-          </h4>
-          <div className="filterBtnContainer" id="fliterBtnContainer">
-            <div
-              className="btn-group"
-              role="group"
-              aria-label="Basic mixed styles example"
-            >
-              <button
-                id="weekBtn"
-                onClick={() => handleTimeAndPriceFilter("week")}
-                type="button"
-                className="btn"
+      <div className="analysisContainer">
+        <div className="summaryAndGraphContainer">
+          <div className="summaryContainer">
+            <div>
+              {cryptoStats.length < 1 ? "" : <img src={cryptoStats[0].image} />}
+              <h3>
+                {cryptoStats.length < 1 ? <Loading /> : cryptoStats[0].name}
+              </h3>
+            </div>
+            <h4 id="cryptoprice">
+              {cryptoMarketData_week.length < 1
+                ? ""
+                : "₹ " +
+                  cryptoMarketData_week.prices[
+                    cryptoMarketData_week.prices.length - 1
+                  ][1]}
+            </h4>
+            <div className="filterBtnContainer" id="fliterBtnContainer">
+              <div
+                className="btn-group"
+                role="group"
+                aria-label="Basic mixed styles example"
               >
-                Week
-              </button>
-              <button
-                id="monthBtn"
-                onClick={() => handleTimeAndPriceFilter("month")}
-                type="button"
-                className="btn"
-              >
-                Month
-              </button>
+                <button
+                  id="weekBtn"
+                  onClick={() => handleTimeAndPriceFilter("week")}
+                  type="button"
+                  className="btn"
+                >
+                  Week
+                </button>
+                <button
+                  id="monthBtn"
+                  onClick={() => handleTimeAndPriceFilter("month")}
+                  type="button"
+                  className="btn"
+                >
+                  Month
+                </button>
+              </div>
             </div>
           </div>
+          <AnalysisGraph time={timeCategory} priceList={priceList} />
+          <Stats cryptoId={cryptoId} />
+          <AboutCrypto about={aboutCrypto} />
         </div>
-        <AnalysisGraph time={timeCategory} priceList={priceList} />
-        <Stats cryptoId={cryptoId} />
-        <AboutCrypto about={aboutCrypto} />
+        <TrendingPanel cryptoStats={cryptoStats}/>
       </div>
     </>
   );
