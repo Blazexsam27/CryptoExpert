@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles/Analysis.css";
+import { useState, useEffect } from "react";
 import {
   CategoryScale,
   Chart,
@@ -23,6 +24,27 @@ export default function AnalysisGraph(props) {
     Tooltip
   );
 
+  const { priceListArr, timeFilterArr } = props;
+  const [priceList, setPriceList] = useState([]);
+  const [timeList, setTimeList] = useState([]);
+  const createChart = () => {
+    setPriceList(priceListArr);
+    setTimeList(timeFilterArr);
+  };
+  const data = {
+    labels: timeList,
+    datasets: [
+      {
+        label: "price",
+        data: priceList,
+        borderColor: "#00ff08",
+        backgroundColor: "#347d00",
+      },
+    ],
+  };
+  useEffect(() => {
+    createChart();
+  }, [priceListArr.length]);
   const options = {
     responsive: true,
     plugins: {
@@ -31,25 +53,14 @@ export default function AnalysisGraph(props) {
       },
     },
   };
-  const data = {
-    labels: props.time,
-    datasets: [
-      {
-        label: "price",
-        data: props.priceList,
-        borderColor: "#00ff08",
-        backgroundColor: "#347d00",
-      },
-    ],
-  };
 
   return (
     <>
       <div className="analysisGraphContainer">
-        {props.priceList.length > 0 ? (
+        {priceList.length > 0 ? (
           <Line options={options} data={data}></Line>
         ) : (
-          "Please Select a Time Filter"
+          "Loading Stats Please Wait..."
         )}
       </div>
     </>

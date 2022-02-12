@@ -26,12 +26,12 @@ export default function CryptoList() {
                 <Link
                   to={{
                     pathname: "/analysis",
-                    search: `?args=${element.id}&name=${element.name}`,
+                    search: `?coinNameId=${element.crypto_id_name}&symbol=${element.symbol}&name=${element.name}`,
                   }}
                   className="cardLink"
                 >
                   <div className="card">
-                    <img src={element.logo} alt="something" />
+                    <img src={element.logo} alt="crypto_logo" />
                     <div>Name : {element.name}</div>
                   </div>
                 </Link>
