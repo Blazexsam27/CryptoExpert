@@ -11,14 +11,15 @@ import TrendingPanel from "./TrendingPanel.js";
 
 export default function Analysis() {
   const { search } = useLocation();
-  const cryptoId = new URLSearchParams(search).get("args");
+  const cryptoNameId = new URLSearchParams(search).get("coinNameId");
   const cryptoName = new URLSearchParams(search).get("name");
+  const cryptoSymbol = new URLSearchParams(search).get("symbol");
   const [cryptoStats, setCryptoStats] = useState([]);
   const [cryptoMarketData_week, setCryptoMarketData_week] = useState([]); // Get Weekly Data.
   const [cryptoMarketData_month, setCryptoMarketData_month] = useState([]); // Get Monthly Data.
   const [priceList, setPriceList] = useState([]);
   const [aboutCrypto, setAboutCrypto] = useState({});
-  const [timeCategory, settimeCategory] = useState([
+  const [timeFilter, settimeFilter] = useState([
     "1",
     "2",
     "3",
@@ -28,39 +29,38 @@ export default function Analysis() {
     "7",
   ]);
 
-  let priceListTemp = [];
+  const priceListTemp = [];
   const days = [];
 
-  useEffect(async () => {
-    await services.getCryptoStats(cryptoId).then((result) => {
+  useEffect(() => {
+    services.getCryptoStats(cryptoNameId).then((result) => {
       setCryptoStats(result.data);
     });
-    await services.getCryptoMarketData(cryptoId, "6").then((result) => {
+    services.getCryptoMarketData(cryptoNameId, "6").then((result) => {
       setCryptoMarketData_week(result.data);
+      handleTimeAndPriceFilter("week", result.data.prices, 8);
     });
 
-    await services.getCryptoMarketData(cryptoId, "30").then((result) => {
+    services.getCryptoMarketData(cryptoNameId, "30").then((result) => {
       setCryptoMarketData_month(result.data);
     });
 
-    await axios
-      .get("/about_crypto/?id=" + cryptoName.toLowerCase())
-      .then((response) => {
-        setAboutCrypto(response.data);
-      });
-  }, []);
+    axios.get("/about_crypto/?symbol=" + cryptoSymbol).then((response) => {
+      setAboutCrypto(response.data[0]);
+    });
+    settimeFilter(days);
+    setPriceList(priceListTemp);
+  }, [cryptoNameId]);
 
-  const handleTimeAndPriceFilter = (filter) => {
+  const handleTimeAndPriceFilter = (filter, prices, time) => {
     if (filter == "week") {
-      for (let price of cryptoMarketData_week.prices)
-        priceListTemp.push(price[1]);
-      for (let x = 1; x < 8; x++) days.push(x.toString());
+      for (const price of prices) priceListTemp.push(price[1]);
+      for (let x = 1; x < time; x++) days.push(x.toString());
     } else {
-      for (let price of cryptoMarketData_month.prices)
-        priceListTemp.push(price[1]);
+      for (const price of prices) priceListTemp.push(price[1]);
       for (let x = 1; x < 31; x++) days.push(x.toString());
     }
-    settimeCategory(days);
+    settimeFilter(days);
     setPriceList(priceListTemp);
   };
 
@@ -92,7 +92,13 @@ export default function Analysis() {
               >
                 <button
                   id="weekBtn"
-                  onClick={() => handleTimeAndPriceFilter("week")}
+                  onClick={() =>
+                    handleTimeAndPriceFilter(
+                      "week",
+                      cryptoMarketData_week.prices,
+                      8
+                    )
+                  }
                   type="button"
                   className="btn"
                 >
@@ -100,7 +106,13 @@ export default function Analysis() {
                 </button>
                 <button
                   id="monthBtn"
-                  onClick={() => handleTimeAndPriceFilter("month")}
+                  onClick={() =>
+                    handleTimeAndPriceFilter(
+                      "month",
+                      cryptoMarketData_month.prices,
+                      31
+                    )
+                  }
                   type="button"
                   className="btn"
                 >
@@ -109,11 +121,11 @@ export default function Analysis() {
               </div>
             </div>
           </div>
-          <AnalysisGraph time={timeCategory} priceList={priceList} />
-          <Stats cryptoId={cryptoId} />
+          <AnalysisGraph timeFilterArr={timeFilter} priceListArr={priceList} />
+          <Stats cryptoId={cryptoNameId} />
           <AboutCrypto about={aboutCrypto} />
         </div>
-        <TrendingPanel cryptoStats={cryptoStats}/>
+        <TrendingPanel cryptoStats={cryptoStats} />
       </div>
     </>
   );

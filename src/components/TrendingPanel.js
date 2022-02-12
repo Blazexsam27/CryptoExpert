@@ -1,29 +1,37 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./styles/TrendingPanel.css";
+import { useState } from "react";
+import axios from "axios";
+import CryptoCard from "./widgets/CryptoCard";
 
 export default function TrendingPanel(props) {
   const { cryptoStats } = props;
+  const [cryptoList, setCryptoList] = useState([]);
+
+  useEffect(async () => {
+    await axios.get("/cryptoList").then((response) => {
+      setCryptoList(response.data);
+    });
+  }, [cryptoList.length]);
+
+  const card = cryptoList.map((element) => {
+    return (
+      <div key={element.id}>
+        <CryptoCard
+          name={element.name}
+          image={element.logo}
+          symbol={element.symbol}
+          cryptoIdName={element.crypto_id_name}
+        />
+      </div>
+    );
+  });
 
   return (
     <div className="trendingPanelContainer">
       <h1>Trending Cryptos</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. In aliquam sit
-        ut a illum nisi ducimus.
-      </p>
-      <div className="cryptoCard">
-        <div className="cryptoCardContent">
-          <img
-            src={cryptoStats[0] != undefined ? cryptoStats[0].image : ""}
-            alt="logo"
-          />
-          <div>
-            <h5>crypto name</h5>
-            <h5>crypto code</h5>
-          </div>
-        </div>
-        <h4>price</h4>
-      </div>
+      <p>Checkout current most popular crypto currencies.</p>
+      {card}
     </div>
   );
 }

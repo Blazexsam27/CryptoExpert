@@ -8,20 +8,49 @@
   margin-top: 126px;
 }
 
+/* STYLES FOR CRYPTO CARDS IN TRENDING PANEL */
+
 .cryptoCard {
   display: flex;
-  justify-content: space-between;
-  padding: 10px;
+  justify-content: center;
+  border: 1px solid gray;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s;
 }
+
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  color: #01ff9e;
+}
+
+.cryptoCard:hover {
+  box-shadow: -3px 1px 49px -24px #01ff9e;
+  -webkit-box-shadow: -3px 1px 49px -24px #01ff9e;
+  -moz-box-shadow: -3px 1px 49px -24px #01ff9e;
+  padding: 10px;
+  transition: 0.3s;
+}
+
+.cryptoCard p {
+  margin: 0;
+  padding: 0;
+}
+
 .cryptoCardContent {
   display: flex;
+  padding: 5px;
 }
 
 .cryptoCardContent div {
   display: flex;
   flex-direction: column;
+  padding-left: 10px;
 }
 .cryptoCardContent img {
-  width: 55px;
-  height: 55px;
+  width: 50px;
+  height: 50px;
 }
