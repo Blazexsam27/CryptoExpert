@@ -8,11 +8,12 @@ import Stats from "./Stats.js";
 import AboutCrypto from "./AboutCrypto.js";
 import axios from "axios";
 import TrendingPanel from "./TrendingPanel.js";
+import PredictionPanel from "./PredictionPanel.js";
 
 export default function Analysis() {
   const { search } = useLocation();
   const cryptoNameId = new URLSearchParams(search).get("coinNameId");
-  const cryptoName = new URLSearchParams(search).get("name");
+  const cryptoName = new URLSearchParams(search).get("name"); // MAYBE REQUIRED FOR FURTHER COMPONENTS.
   const cryptoSymbol = new URLSearchParams(search).get("symbol");
   const [cryptoStats, setCryptoStats] = useState([]);
   const [cryptoMarketData_week, setCryptoMarketData_week] = useState([]); // Get Weekly Data.
@@ -123,6 +124,7 @@ export default function Analysis() {
           </div>
           <AnalysisGraph timeFilterArr={timeFilter} priceListArr={priceList} />
           <Stats cryptoId={cryptoNameId} />
+          <PredictionPanel />
           <AboutCrypto about={aboutCrypto} />
         </div>
         <TrendingPanel cryptoStats={cryptoStats} />

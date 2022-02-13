@@ -1,0 +1,11 @@
+.predictionPanel {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 780px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}

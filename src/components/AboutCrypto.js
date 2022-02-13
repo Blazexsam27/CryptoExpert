@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles/AboutCrypto.css";
+import { Link } from "react-router-dom";
 
 export default function AboutCrypto(props) {
   const { about } = props;
@@ -18,6 +19,10 @@ export default function AboutCrypto(props) {
           How {capitalizeFirstLetter(about.name)} Works?
         </h3>
         <div className="descContainer">{about.working}</div>
+        <h3 className="header">Resource</h3>
+        <Link to={`//${about.resources}`} target="_blank">
+          <div className="descContainer">{about.resources}</div>
+        </Link>
       </div>
     </>
   );

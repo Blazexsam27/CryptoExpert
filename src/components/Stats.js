@@ -13,7 +13,7 @@ export default function Stats(props) {
       setPriceStats(response.data.prices);
       setVolumeStats(response.data.total_volumes);
     });
-  }, []);
+  }, [props.cryptoId]);
 
   return (
     <>
