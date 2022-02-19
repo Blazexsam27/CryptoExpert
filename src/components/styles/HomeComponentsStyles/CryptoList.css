@@ -33,6 +33,7 @@
 
 .card div {
   width: 100%;
+  padding-top: 15px;
 }
 
 .card img {

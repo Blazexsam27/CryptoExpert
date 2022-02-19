@@ -1,8 +1,8 @@
 import { React, useEffect, useState } from "react";
-import "./styles/CryptoList.css";
+import "../styles/HomeComponentsStyles/CryptoList.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Loading from "./Loading.js";
+import Loading from "../Loading.js";
 
 export default function CryptoList() {
   const [cryptoList, setcryptoList] = useState([]);

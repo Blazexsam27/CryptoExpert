@@ -4,6 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: 0.5s;
 }
 
 .navbar ul li {
@@ -24,6 +25,7 @@
 
 .navbar li:hover {
   color: #00b627;
+  transition: 0.5s;
 }
 
 .navbar img {

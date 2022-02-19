@@ -43,9 +43,17 @@ app.listen(port, () => {
 });
 
 app.get("/cryptoList", async (request, response) => {
-  req_query = "SELECT * FROM crypto_currencies";
-  const result = await client(req_query);
-  response.send(result.rows);
+  let search_query = request.query.search_query;
+  console.log(search_query);
+  if (search_query != undefined && search_query.length > 0) {
+    req_query = `SELECT * FROM crypto_currencies WHERE name='${search_query.toLowerCase()}'`;
+    const result = await client(req_query);
+    response.send(result.rows);
+  } else {
+    req_query = "SELECT * FROM crypto_currencies";
+    const result = await client(req_query);
+    response.send(result.rows);
+  }
 });
 
 app.get("/about_crypto", async (request, response) => {

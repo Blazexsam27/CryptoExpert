@@ -1,7 +1,5 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Home from "./components/Home";
-import CryptoList from "./components/CryptoList";
+import Home from "./components/HomeComponents/Home";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Analysis from "./components/Analysis";
@@ -9,11 +7,9 @@ import Analysis from "./components/Analysis";
 function App() {
   return (
     <>
+      <Navbar />
       <Routes>
-        <Route
-          path="/"
-          element={[<Navbar />, <Home />, <CryptoList />]}
-        ></Route>
+        <Route path="/" element={<Home />}></Route>
         <Route path="/analysis" element={<Analysis />}></Route>
       </Routes>
     </>

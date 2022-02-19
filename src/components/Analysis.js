@@ -67,7 +67,6 @@ export default function Analysis() {
 
   return (
     <>
-      <Navbar />
       <div className="analysisContainer">
         <div className="summaryAndGraphContainer">
           <div className="summaryContainer">

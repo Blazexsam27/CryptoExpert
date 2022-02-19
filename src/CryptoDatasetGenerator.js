@@ -15,7 +15,7 @@ const createCsv = csv({
 let ObjArr,
   getCryptoData = async () => {
     return await axios.get(
-      "https://api.coingecko.com/api/v3/coins/ripple/market_chart?vs_currency=inr&days=30"
+      "https://api.coingecko.com/api/v3/coins/ripple/market_chart?vs_currency=inr&days=30" //Change crypto id here.
     );
   };
 
