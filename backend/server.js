@@ -1,5 +1,5 @@
 const express = require("express");
-const port = process.env.PORT || 3001;
+const port = 3001;
 const app = express();
 const cors = require("cors");
 const { Pool, Client } = require("pg");
@@ -44,9 +44,10 @@ app.listen(port, () => {
 
 app.get("/cryptoList", async (request, response) => {
   let search_query = request.query.search_query;
-  console.log(search_query);
-  if (search_query != undefined && search_query.length > 0) {
-    req_query = `SELECT * FROM crypto_currencies WHERE name='${search_query.toLowerCase()}'`;
+  if (search_query != undefined && search_query.toString().length > 2) {
+    req_query = `SELECT * FROM crypto_currencies WHERE name='${search_query
+      .toString()
+      .toLowerCase()}'`;
     const result = await client(req_query);
     response.send(result.rows);
   } else {

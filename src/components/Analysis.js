@@ -5,7 +5,7 @@ import Navbar from "./Navbar.js";
 import Loading from "./Loading.js";
 import AnalysisGraph from "./AnalysisGraph.js";
 import Stats from "./Stats.js";
-import AboutCrypto from "./AboutCrypto.js";
+import AboutCrypto from "./AboutComponents/AboutCrypto.js";
 import axios from "axios";
 import TrendingPanel from "./TrendingPanel.js";
 import PredictionPanel from "./PredictionPanel.js";

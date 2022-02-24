@@ -30,7 +30,7 @@ export default function Stats(props) {
             </tr>
             <tr className="rowElement">
               <th>₹ {marketCaps.length > 0 ? marketCaps[0][1] : "Loading"}</th>
-              <th>{volumes.length > 0 ? volumes[0][1] : "Loading"}</th>
+              <th>₹ {volumes.length > 0 ? volumes[0][1] : "Loading"}</th>
               <th>₹ {prices.length > 0 ? prices[0][1] : "Loading"}</th>
             </tr>
           </tbody>

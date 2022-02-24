@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/AboutCrypto.css";
+import "../styles/AboutComponentsStyles/AboutCrypto.css";
 import { Link } from "react-router-dom";
 
 export default function AboutCrypto(props) {

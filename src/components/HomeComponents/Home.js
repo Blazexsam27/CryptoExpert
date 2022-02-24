@@ -2,22 +2,25 @@ import axios from "axios";
 import { React, useState } from "react";
 import "../styles/HomeComponentsStyles/Home.css";
 import CryptoList from "./CryptoList";
-import AboutIntro from "./AboutIntro";
+import AboutIntro from "../AboutComponents/AboutIntro";
 import AnalysisIntro from "./AnalysisIntro";
 
 export default function Home() {
-  const [inputValue, setInputValue] = useState(undefined);
-  const handleSearch = () => {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleSearch = (e) => {
+    e.preventDefault();
     console.log(inputValue);
-    console.log("something");
-    // axios.get("/cryptoList?search_query=" + input).then((response) => {
-    //   console.log(response.data);
-    // });
+    axios
+      .get("http://localhost:3001/cryptoList?search_query=" + inputValue)
+      .then((response) => {
+        console.log(response.data);
+      });
   };
 
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-    console.log(inputValue);
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    setInputValue(e.target.value);
   };
 
   return (

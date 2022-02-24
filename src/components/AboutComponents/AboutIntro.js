@@ -1,6 +1,8 @@
 import React from "react";
 import blockchain_logo from "../assets/blockchain_logo.jpg";
-import "../styles/HomeComponentsStyles/AboutIntro.css";
+import "../styles/AboutComponentsStyles/AboutIntro.css";
+import bitcoin_logo from "../assets/bitcoin_logo.png";
+import news_logo from "../assets/news_logo.png";
 import { Link } from "react-router-dom";
 
 export default function AboutIntro() {
@@ -9,14 +11,14 @@ export default function AboutIntro() {
       <h1 className="display-5 fw-bold">
         The Most Advanced Crypto Analysis Platform.
       </h1>
-      <div className="col-lg-6 mx-auto">
+      <div className=" col-lg-6 mx-auto">
         <p className="lead mb-4">
           Quickly design and customize responsive mobile-first sites with
           Bootstrap, the world’s most popular front-end open source toolkit,
           featuring Sass variables and mixins, responsive grid system, extensive
           prebuilt components, and powerful JavaScript plugins.
         </p>
-        <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <div className="d-grid gap-2 d-sm-flex flex-column justify-content-sm-center">
           <div className="aboutIntroCardContainer">
             <Link to="">
               <img src={blockchain_logo} alt="" />
@@ -31,7 +33,7 @@ export default function AboutIntro() {
           </div>
           <div className="aboutIntroCardContainer">
             <Link to="">
-              <img src={blockchain_logo} alt="" />
+              <img src={bitcoin_logo} alt="" />
             </Link>
             <div className="aboutIntroDesc">
               <h5>Learn about crypto investments</h5>
@@ -43,10 +45,10 @@ export default function AboutIntro() {
           </div>
           <div className="aboutIntroCardContainer">
             <Link to="">
-              <img src={blockchain_logo} alt="" />
+              <img src={news_logo} alt="" />
             </Link>
             <div className="aboutIntroDesc">
-              <h5>Daily news updates about crypto</h5>
+              <h5>Daily updates about crypto</h5>
               <p>
                 Get latest new updates about crypto currencies to make crucial
                 decisions.
