@@ -1,24 +1,22 @@
-import { React, useEffect, useState } from "react";
+import { React } from "react";
 import "../styles/HomeComponentsStyles/CryptoList.css";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import Loading from "../Loading.js";
 
-export default function CryptoList() {
-  const [cryptoList, setcryptoList] = useState([]);
-  useEffect(async () => {
-    await axios.get("/cryptoList").then((result) => {
-      setcryptoList(result.data);
-    });
-  }, []);
+export default function CryptoList(props) {
+  const { cryptoList, found } = props;
+
   return (
     <>
       <div className="headingContainer">
-        <h1>Start Analysis</h1>
+        <h1>Trending Crypto Currencies</h1>
       </div>
       <div className="cryptoListContainer row">
-        {cryptoList.length < 1 ? (
-          <Loading></Loading>
+        {!found ? (
+          <>
+            <Loading></Loading>
+            <h4>Sorry No Results Found!</h4>
+          </>
         ) : (
           cryptoList.map((element) => {
             return (

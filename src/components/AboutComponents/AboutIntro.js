@@ -13,14 +13,13 @@ export default function AboutIntro() {
       </h1>
       <div className=" col-lg-6 mx-auto">
         <p className="lead mb-4">
-          Quickly design and customize responsive mobile-first sites with
-          Bootstrap, the world’s most popular front-end open source toolkit,
-          featuring Sass variables and mixins, responsive grid system, extensive
-          prebuilt components, and powerful JavaScript plugins.
+          CryptoExpert has precise and reliable trained LTSM models which gives
+          you the best possible predictions, while keeping in mind about he past
+          600 records.
         </p>
         <div className="d-grid gap-2 d-sm-flex flex-column justify-content-sm-center">
           <div className="aboutIntroCardContainer">
-            <Link to="">
+            <Link to="//en.wikipedia.org/wiki/Blockchain">
               <img src={blockchain_logo} alt="" />
             </Link>
             <div className="aboutIntroDesc">
@@ -32,7 +31,7 @@ export default function AboutIntro() {
             </div>
           </div>
           <div className="aboutIntroCardContainer">
-            <Link to="">
+            <Link to="//www.investopedia.com/cryptocurrency-4427699">
               <img src={bitcoin_logo} alt="" />
             </Link>
             <div className="aboutIntroDesc">
@@ -44,7 +43,7 @@ export default function AboutIntro() {
             </div>
           </div>
           <div className="aboutIntroCardContainer">
-            <Link to="">
+            <Link to="//cryptonews.com/">
               <img src={news_logo} alt="" />
             </Link>
             <div className="aboutIntroDesc">

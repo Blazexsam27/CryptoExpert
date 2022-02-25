@@ -1,5 +1,5 @@
 import axios from "axios";
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import "../styles/HomeComponentsStyles/Home.css";
 import CryptoList from "./CryptoList";
 import AboutIntro from "../AboutComponents/AboutIntro";
@@ -7,21 +7,31 @@ import AnalysisIntro from "./AnalysisIntro";
 
 export default function Home() {
   const [inputValue, setInputValue] = useState("");
+  const [cryptoList, setCryptoList] = useState([]);
+  const [found, setFound] = useState(true);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log(inputValue);
     axios
       .get("http://localhost:3001/cryptoList?search_query=" + inputValue)
       .then((response) => {
-        console.log(response.data);
+        if (response.data.length > 0) setFound(true);
+        else setFound(false);
+        setCryptoList(response.data);
       });
+    setInputValue("");
   };
 
   const handleInputChange = (e) => {
     e.preventDefault();
     setInputValue(e.target.value);
   };
+
+  useEffect(() => {
+    axios.get("/cryptoList").then((result) => {
+      setCryptoList(result.data);
+    });
+  }, inputValue.length);
 
   return (
     <>
@@ -44,6 +54,7 @@ export default function Home() {
               aria-label="Search"
               id="searchInputId"
               onChange={handleInputChange}
+              value={inputValue}
             />
             <button className="search-btn-grad" type="submit">
               Search
@@ -51,7 +62,7 @@ export default function Home() {
           </form>
         </div>
       </div>
-      <CryptoList />,
+      <CryptoList cryptoList={cryptoList} found={found} />,
       <AnalysisIntro />,
       <AboutIntro />,
     </>
