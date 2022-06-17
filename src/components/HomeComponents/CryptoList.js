@@ -1,7 +1,7 @@
 import { React } from "react";
 import "../styles/HomeComponentsStyles/CryptoList.css";
 import { Link } from "react-router-dom";
-import Loading from "../Loading.js";
+import Loading from "../widgets/Loading.js";
 
 export default function CryptoList(props) {
   const { cryptoList, found } = props;
@@ -9,7 +9,7 @@ export default function CryptoList(props) {
   return (
     <>
       <div className="headingContainer">
-        <h1>Trending Crypto Currencies</h1>
+        <h1 style={{ textAlign: "center" }}>Trending Crypto Currencies</h1>
       </div>
       <div className="cryptoListContainer row">
         {!found ? (

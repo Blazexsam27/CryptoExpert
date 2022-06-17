@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
-import "./styles/Stats.css";
-import * as services from "../services.js";
+import "../styles/Stats.css";
+import * as services from "../../services.js";
 
 export default function Stats(props) {
   const [marketCaps, setMarketCaps] = useState([]);
@@ -8,7 +8,7 @@ export default function Stats(props) {
   const [volumes, setVolumeStats] = useState([]);
 
   useEffect(async () => {
-    services.getCryptoMarketStats(props.cryptoId).then((response) => {
+    services.getCryptoMarketStats(props.cryptoId, "inr").then((response) => {
       setMarketCaps(response.data.market_caps);
       setPriceStats(response.data.prices);
       setVolumeStats(response.data.total_volumes);

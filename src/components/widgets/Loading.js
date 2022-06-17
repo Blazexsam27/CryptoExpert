@@ -1,5 +1,5 @@
 import { React } from "react";
-import "./styles/widget.css";
+import "../styles/widget.css";
 
 export default function Loading() {
   return (

@@ -1,0 +1,9 @@
+@media only screen and (max-width: 602px) {
+  .introSection p {
+    width: 100%;
+  }
+  .search-btn-grad {
+    margin: 0;
+    padding: 2px 15px;
+  }
+}

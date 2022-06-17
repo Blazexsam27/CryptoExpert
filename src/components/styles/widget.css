@@ -4,3 +4,67 @@
   height: 2rem;
   opacity: 0.4;
 }
+
+.currency-dropdown {
+  background-color: lime;
+  border: 1px solid lime;
+}
+
+/* NAVBAR STYLE */
+
+.navbar {
+  height: 100px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.5s;
+}
+
+.navbar ul li {
+  display: inline;
+  color: black;
+  padding: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.navbar ul {
+  padding-right: 65px;
+  margin: 0px;
+}
+.navbar a {
+  text-decoration: none;
+}
+
+.navbar li:hover {
+  color: #00b627;
+  transition: 0.5s;
+}
+
+.navbar img {
+  padding-left: 40px;
+  width: 95px;
+  height: 55px;
+}
+
+.dropdown {
+  margin-top: 32px;
+  margin-left: 482px;
+}
+
+/* NAVBAR MOBILE STYLES */
+
+@media only screen and (max-width: 602px) {
+  .navbar {
+    justify-content: center;
+  }
+  .navbar ul {
+    padding-right: 15px;
+  }
+  .navbar img {
+    padding-left: 13px;
+    width: 76px;
+    height: 60px;
+  }
+}

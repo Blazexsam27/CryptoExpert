@@ -1,0 +1,8 @@
+@media only screen and (max-width: 602px) {
+  .aboutIntroCardContainer img {
+    width: 80px;
+    height: 80px;
+    margin: 30px;
+    cursor: pointer;
+  }
+}

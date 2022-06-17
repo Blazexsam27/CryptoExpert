@@ -1,20 +1,21 @@
 import { React, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import * as services from "../services.js";
-import Navbar from "./Navbar.js";
-import Loading from "./Loading.js";
+import * as services from "../../services.js";
+import Dropdown from "../widgets/Dropdown.js";
+import Loading from "../widgets/Loading.js";
 import AnalysisGraph from "./AnalysisGraph.js";
 import Stats from "./Stats.js";
-import AboutCrypto from "./AboutComponents/AboutCrypto.js";
+import AboutCrypto from "../AboutComponents/AboutCrypto.js";
 import axios from "axios";
-import TrendingPanel from "./TrendingPanel.js";
-import PredictionPanel from "./PredictionPanel.js";
+import TrendingPanel from "../TrendingPanel.js";
+import PredictionPanel from "../PredictionPanel.js";
 
 export default function Analysis() {
   const { search } = useLocation();
   const cryptoNameId = new URLSearchParams(search).get("coinNameId");
   const cryptoName = new URLSearchParams(search).get("name"); // MAYBE REQUIRED FOR FURTHER COMPONENTS.
   const cryptoSymbol = new URLSearchParams(search).get("symbol");
+  const [currency, setCurrency] = useState("inr");
   const [cryptoStats, setCryptoStats] = useState([]);
   const [cryptoMarketData_week, setCryptoMarketData_week] = useState([]); // Get Weekly Data.
   const [cryptoMarketData_month, setCryptoMarketData_month] = useState([]); // Get Monthly Data.
@@ -32,26 +33,40 @@ export default function Analysis() {
 
   const priceListTemp = [];
   const days = [];
+  const currencyMap = new Map([
+    ["inr", "₹"],
+    ["usd", "$"],
+    ["jpy", "¥"],
+    ["eur", "€"],
+  ]);
+
+  const handleCurrencyChange = (e) => {
+    e.preventDefault();
+    setCurrency(e.target.value);
+  };
 
   useEffect(() => {
+    console.log(cryptoNameId);
     services.getCryptoStats(cryptoNameId).then((result) => {
       setCryptoStats(result.data);
     });
-    services.getCryptoMarketData(cryptoNameId, "6").then((result) => {
+    services.getCryptoMarketData(cryptoNameId, currency, "6").then((result) => {
       setCryptoMarketData_week(result.data);
       handleTimeAndPriceFilter("week", result.data.prices, 8);
     });
 
-    services.getCryptoMarketData(cryptoNameId, "30").then((result) => {
-      setCryptoMarketData_month(result.data);
-    });
+    services
+      .getCryptoMarketData(cryptoNameId, currency, "30")
+      .then((result) => {
+        setCryptoMarketData_month(result.data);
+      });
 
     axios.get("/about_crypto/?symbol=" + cryptoSymbol).then((response) => {
       setAboutCrypto(response.data[0]);
     });
     settimeFilter(days);
     setPriceList(priceListTemp);
-  }, [cryptoNameId]);
+  }, [cryptoNameId, currency]);
 
   const handleTimeAndPriceFilter = (filter, prices, time) => {
     if (filter == "week") {
@@ -75,15 +90,18 @@ export default function Analysis() {
               <h3>
                 {cryptoStats.length < 1 ? <Loading /> : cryptoStats[0].name}
               </h3>
+              <Dropdown handleCurrencyChange={handleCurrencyChange} />
             </div>
             <h4 id="cryptoprice">
               {cryptoMarketData_week.length < 1
                 ? ""
-                : "₹ " +
+                : currencyMap.get(currency) +
+                  " " +
                   cryptoMarketData_week.prices[
                     cryptoMarketData_week.prices.length - 1
                   ][1]}
             </h4>
+
             <div className="filterBtnContainer" id="fliterBtnContainer">
               <div
                 className="btn-group"
@@ -126,7 +144,9 @@ export default function Analysis() {
           <PredictionPanel />
           <AboutCrypto about={aboutCrypto} />
         </div>
-        <TrendingPanel cryptoStats={cryptoStats} />
+        <div>
+          <TrendingPanel cryptoStats={cryptoStats} />
+        </div>
       </div>
     </>
   );

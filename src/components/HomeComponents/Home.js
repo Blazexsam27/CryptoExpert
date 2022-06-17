@@ -4,6 +4,7 @@ import "../styles/HomeComponentsStyles/Home.css";
 import CryptoList from "./CryptoList";
 import AboutIntro from "../AboutComponents/AboutIntro";
 import AnalysisIntro from "./AnalysisIntro";
+import "../styles/HomeComponentsStyles/HomeMobile.css";
 
 export default function Home() {
   const [inputValue, setInputValue] = useState("");
@@ -37,7 +38,7 @@ export default function Home() {
     <>
       <div className="introContainer">
         <div className="introSection">
-          <h1>CRYPTO EXPERT</h1>
+          <h1 style={{ textAlign: "center" }}>CRYPTO EXPERT</h1>
           <p>
             Crypto Expert is an AI stimulated data analysis platform for crypto
             currency market.
@@ -45,7 +46,6 @@ export default function Home() {
         </div>
 
         <div className="searchForm">
-          <button className="exp-btn-grad mx-2">Explore</button>
           <form className="d-flex" onSubmit={handleSearch}>
             <input
               className="search-input my-2"

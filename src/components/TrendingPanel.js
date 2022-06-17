@@ -28,7 +28,7 @@ export default function TrendingPanel(props) {
   });
 
   return (
-    <div className="trendingPanelContainer">
+    <div className="trendingPanelContainer" style={{ marginTop: "14px" }}>
       <h1>Trending Cryptos</h1>
       <p>Checkout current most popular crypto currencies.</p>
       {card}

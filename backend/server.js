@@ -8,7 +8,7 @@ const credentials = {
   user: "blazexsam",
   host: "localhost",
   database: "blazexsam",
-  password: "123456",
+  password: "blaze",
   port: 5432,
 };
 let req_query = "SELECT * FROM crypto_currencies";

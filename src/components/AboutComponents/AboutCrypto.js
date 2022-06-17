@@ -21,7 +21,7 @@ export default function AboutCrypto(props) {
         <div className="descContainer">{about.working}</div>
         <h3 className="header">Resource</h3>
         <Link to={`//${about.resources}`} target="_blank">
-          <div className="descContainer">{about.resources}</div>
+          <div className="descContainer mb-4">{about.resources}</div>
         </Link>
       </div>
     </>

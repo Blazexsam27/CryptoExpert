@@ -4,6 +4,7 @@ import "../styles/AboutComponentsStyles/AboutIntro.css";
 import bitcoin_logo from "../assets/bitcoin_logo.png";
 import news_logo from "../assets/news_logo.png";
 import { Link } from "react-router-dom";
+import "../styles/AboutComponentsStyles/AboutIntroMobile.css";
 
 export default function AboutIntro() {
   return (

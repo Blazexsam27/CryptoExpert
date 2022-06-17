@@ -1,6 +1,7 @@
 import React from "react";
-import "./styles/Analysis.css";
+import "../styles/AnalysisComponentsStyles/Analysis.css";
 import { useState, useEffect } from "react";
+import "../styles/AnalysisComponentsStyles/AnalysisMobile.css";
 import {
   CategoryScale,
   Chart,
