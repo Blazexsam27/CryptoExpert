@@ -11,6 +11,7 @@ export default function PredictionPanel(props) {
   const handleStatistics = async (e) => {
     e.preventDefault();
     const data = await getStatistics(days, hours, cryptoName, interval);
+    console.log(data);
     setStats(data);
   };
 
@@ -55,7 +56,28 @@ export default function PredictionPanel(props) {
           onChange={(e) => setInterval(e.target.value)}
         />
       </form>
-      {stats ? <div>{stats.mean}</div> : ""}
+      {stats ? (
+        <div className="stats-table">
+          <table>
+            <tbody>
+              <tr className="header-row">
+                <th>Legend</th>
+                <th>Result</th>
+              </tr>
+              {stats.map((item) => {
+                return (
+                  <tr>
+                    <th>{item.name}</th>
+                    <th>{item.value}</th>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

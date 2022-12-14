@@ -18,6 +18,24 @@
 .predictionPanel .stats-container {
   font-weight: bold;
 }
+.predictionPanel .stats-table {
+  display: flex;
+  justify-content: center;
+}
+
+.predictionPanel .stats-table tr {
+  border: 1px solid gray;
+  text-transform: capitalize;
+}
+
+.predictionPanel .stats-table .header-row th {
+  background-color: #dfe6e9;
+  text-align: center;
+}
+
+.predictionPanel .stats-table tr th {
+  padding: 8px 25px;
+}
 
 .predictionPanel .btn-success:hover {
   background: #0984e3;

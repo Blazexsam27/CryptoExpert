@@ -59,13 +59,13 @@ export const getStatistics = async (
   const standardDeviation = ss.standardDeviation(pricesArr);
   const interQuartileRange = ss.interquartileRange(pricesArr);
   const sampleSkewness = ss.sampleSkewness(pricesArr);
-  return {
-    mean,
-    median,
-    mode,
-    variance,
-    standardDeviation,
-    interQuartileRange,
-    sampleSkewness,
-  };
+  return [
+    { name: "mean", value: mean },
+    { name: "median", value: median },
+    { name: "mode", value: mode },
+    { name: "variance", value: variance },
+    { name: "standardDeviation", value: standardDeviation },
+    { name: "interQuartileRange", value: interQuartileRange },
+    { name: "sampleSkewness", value: sampleSkewness },
+  ];
 };
