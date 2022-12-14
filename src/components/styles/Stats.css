@@ -1,21 +1,34 @@
-.statsHeader {
-  padding: 40px 0 0 28px;
+.stats-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gray;
+  margin-top: 5px;
+  border-radius: 5px;
+  width: 65vw;
 }
 
-.statsContainer {
+.stats-container .statsHeader {
+  padding: 20px;
+  text-align: center;
+}
+
+.stats-container .stats-content {
   padding-top: 10px;
-  padding: 10px 0 0 0;
-  width: 780px;
+  padding: 15px;
   display: flex;
-  justify-content: start;
+  justify-content: center;
+}
+.stats-container table {
+  width: 100%;
 }
 
 .statsContainer th {
   padding: 7px 30px;
+  text-align: center;
 }
 
 .statsContainer tr {
-  padding: 10px 0 0 0;
+  padding: 15px;
 }
 
 .rowTitle th {

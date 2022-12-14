@@ -16,11 +16,11 @@ export default function Stats(props) {
   }, [props.cryptoId]);
 
   return (
-    <>
+    <div className="stats-container">
       <div className="statsHeader">
-        <h3>Market Stats</h3>
+        <h3>{props.cryptoId.toUpperCase()} Market Stats</h3>
       </div>
-      <div className="statsContainer">
+      <div className="stats-content">
         <table>
           <tbody>
             <tr className="rowTitle">
@@ -36,6 +36,6 @@ export default function Stats(props) {
           </tbody>
         </table>
       </div>
-    </>
+    </div>
   );
 }

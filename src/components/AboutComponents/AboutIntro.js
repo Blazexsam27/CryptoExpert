@@ -14,9 +14,9 @@ export default function AboutIntro() {
       </h1>
       <div className=" col-lg-6 mx-auto">
         <p className="lead mb-4">
-          CryptoExpert has precise and reliable trained LTSM models which gives
-          you the best possible predictions, while keeping in mind about he past
-          600 records.
+          CryptoExpert is a precise and reliable statistics web application made
+          specifically for crypocurrency market which gives you the best and
+          detailed mathematical statistics.
         </p>
         <div className="d-grid gap-2 d-sm-flex flex-column justify-content-sm-center">
           <div className="aboutIntroCardContainer">

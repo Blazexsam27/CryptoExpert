@@ -3,7 +3,7 @@ import "../styles/widget.css";
 
 export default function Dropdown(props) {
   return (
-    <div className="dropdown" style={{ marginTop: "32px" }}>
+    <div className="dropdown">
       <button
         className="btn btn-primary dropdown-toggle currency-dropdown"
         type="button"

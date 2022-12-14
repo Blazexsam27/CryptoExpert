@@ -1,5 +1,5 @@
 import axios from "axios";
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useRef, useState } from "react";
 import "../styles/HomeComponentsStyles/Home.css";
 import CryptoList from "./CryptoList";
 import AboutIntro from "../AboutComponents/AboutIntro";
@@ -10,6 +10,7 @@ export default function Home() {
   const [inputValue, setInputValue] = useState("");
   const [cryptoList, setCryptoList] = useState([]);
   const [found, setFound] = useState(true);
+  const ref = useRef(null);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -43,25 +44,15 @@ export default function Home() {
             Crypto Expert is an AI stimulated data analysis platform for crypto
             currency market.
           </p>
-        </div>
-
-        <div className="searchForm">
-          <form className="d-flex" onSubmit={handleSearch}>
-            <input
-              className="search-input my-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-              id="searchInputId"
-              onChange={handleInputChange}
-              value={inputValue}
-            />
-            <button className="search-btn-grad" type="submit">
-              Search
-            </button>
-          </form>
+          <button
+            onClick={() => ref.current.scrollIntoView({ behavior: "smooth" })}
+            className="btn btn-primary"
+          >
+            Explore↓
+          </button>
         </div>
       </div>
+      <div ref={ref}></div>
       <CryptoList cryptoList={cryptoList} found={found} />,
       <AnalysisIntro />,
       <AboutIntro />,

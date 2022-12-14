@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../styles/HomeComponentsStyles/AnalysisIntro.css";
 
 export default function AnalysisIntro() {
@@ -24,13 +25,15 @@ export default function AnalysisIntro() {
             investments.
           </p>
           <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-            <button
-              type="button"
-              id="getStartedBtn"
-              className="btn-lg px-4 me-md-2"
-            >
-              Get Started
-            </button>
+            <Link to={"/analysis?coinNameId=bitcoin&symbol=btc&name=bitcoin"}>
+              <button
+                type="button"
+                id="getStartedBtn"
+                className="btn-lg px-4 me-md-2"
+              >
+                Get Started
+              </button>
+            </Link>
           </div>
         </div>
       </div>

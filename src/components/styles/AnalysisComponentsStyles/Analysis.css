@@ -20,7 +20,7 @@
   justify-content: center;
 }
 
-.summaryContainer {
+.analysisContainer .summaryAndGraphContainer .summaryContainer {
   display: flex;
   justify-content: start;
   background-color: white;
@@ -29,6 +29,10 @@
   flex-direction: column;
   position: relative;
   margin-bottom: 26px;
+}
+
+.analysisContainer .summaryAndGraphContainer .graph-and-trending {
+  display: flex;
 }
 
 .summaryContainer div {

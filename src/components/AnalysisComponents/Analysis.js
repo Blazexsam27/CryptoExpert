@@ -139,13 +139,20 @@ export default function Analysis() {
               </div>
             </div>
           </div>
-          <AnalysisGraph timeFilterArr={timeFilter} priceListArr={priceList} />
+          <div className="graph-and-trending">
+            <AnalysisGraph
+              timeFilterArr={timeFilter}
+              priceListArr={priceList}
+              cryptoId={cryptoNameId}
+            />
+            <TrendingPanel cryptoStats={cryptoStats} />
+          </div>
           <Stats cryptoId={cryptoNameId} />
-          <PredictionPanel />
+          <PredictionPanel
+            cryptoName={cryptoNameId}
+            currency={currencyMap.get(currency)}
+          />
           <AboutCrypto about={aboutCrypto} />
-        </div>
-        <div>
-          <TrendingPanel cryptoStats={cryptoStats} />
         </div>
       </div>
     </>
