@@ -12,9 +12,10 @@ import PredictionPanel from "../PredictionPanel.js";
 
 export default function Analysis() {
   const { search } = useLocation();
-  const cryptoNameId = new URLSearchParams(search).get("coinNameId");
-  const cryptoName = new URLSearchParams(search).get("name"); // MAYBE REQUIRED FOR FURTHER COMPONENTS.
-  const cryptoSymbol = new URLSearchParams(search).get("symbol");
+  const cryptoNameId =
+    new URLSearchParams(search).get("coinNameId") || "bitcoin";
+  const cryptoName = new URLSearchParams(search).get("name") || "bitcoin"; // MAYBE REQUIRED FOR FURTHER COMPONENTS.
+  const cryptoSymbol = new URLSearchParams(search).get("symbol") || "btc";
   const [currency, setCurrency] = useState("inr");
   const [cryptoStats, setCryptoStats] = useState([]);
   const [cryptoMarketData_week, setCryptoMarketData_week] = useState([]); // Get Weekly Data.
@@ -46,7 +47,6 @@ export default function Analysis() {
   };
 
   useEffect(() => {
-    console.log(cryptoNameId);
     services.getCryptoStats(cryptoNameId).then((result) => {
       setCryptoStats(result.data);
     });

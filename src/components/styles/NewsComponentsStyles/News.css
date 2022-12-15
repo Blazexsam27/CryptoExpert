@@ -1,0 +1,98 @@
+.news-page-header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 4rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.upper-card-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 1fr;
+  justify-content: center;
+  gap: 5px;
+  height: 40vh;
+  margin: 3rem 12rem;
+  position: relative;
+}
+
+.upper-card-container a {
+  border-radius: 7px;
+  background-size: cover;
+  transition: 0.5s;
+  position: relative;
+  padding: 20px;
+  color: #fff;
+  text-shadow: 3px 2px 2px rgba(0, 0, 0, 0.38);
+}
+
+.upper-card-container .card1 {
+  grid-row: 1/3;
+}
+.upper-card-container .card2 {
+  grid-row: 1/3;
+  grid-column: 2/4;
+}
+.upper-card-container .card3 {
+  grid-row: 1/3;
+}
+
+.lower-card-container {
+  display: grid;
+  justify-content: center;
+  margin: 3rem 12rem;
+  position: relative;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr, 1fr;
+  height: 40vh;
+  gap: 5px;
+}
+
+.lower-card-container a {
+  border-radius: 7px;
+  background-size: cover;
+  transition: 0.5s;
+  position: relative;
+  padding: 20px;
+  color: #fff;
+  text-shadow: 3px 2px 2px rgba(0, 0, 0, 0.38);
+}
+
+.lower-card-container .card1 {
+  grid-row: 1/3;
+  grid-column: 1/3;
+}
+
+.lower-card-container .card2 {
+  grid-row: 1/3;
+}
+
+.lower-card-container .card3 {
+  grid-row: 1/3;
+}
+
+.upper-card-container a:hover,
+.lower-card-container a:hover {
+  transition: 0.5s;
+}
+
+@media (max-width: 1300px) {
+  .upper-card-container,
+  .lower-card-container {
+    margin: 2rem 6rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .upper-card-container,
+  .lower-card-container {
+    margin: 1rem 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .upper-card-container,
+  .lower-card-container {
+    margin: 1rem 1rem;
+  }
+}
