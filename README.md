@@ -1,18 +1,21 @@
-# Getting Started with Create React App
+# Getting Started with Crypto Expert
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Crypto Expert is an online statistical web application for crypto currency markte built using Reactjs + Express.js + Postgresql and coingecko API.
+Crypto Expert also includes latest news section which brings you top headlines and articles about crypto currency market.
+Graphical analysis, statistics like mean, variance, sample deviation etc. can be obtained for most popular cryptocurrencies like Bitcoin, Ethereum, Polygon etc.
 
 ## Available Scripts
 
-In the project directory, you can run:
+To run the front-end simply write command
 
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To run the backend server write:
+
+### `node server.js`
 
 ### `npm test`
 
