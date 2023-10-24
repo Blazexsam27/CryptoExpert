@@ -1,0 +1,17 @@
+#analysisIntroImg {
+  width: 270px;
+  height: 270px;
+}
+
+#getStartedBtn {
+  border: none;
+  border-radius: 5px;
+  background-color: #15ff00;
+  color: white;
+  transition: 0.5s;
+}
+
+#getStartedBtn:hover {
+  background-color: #11d100;
+  transition: 0.5s;
+}

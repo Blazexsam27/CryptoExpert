@@ -1,0 +1,43 @@
+.predictionPanel {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 65vw;
+  height: auto;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.predictionPanel .btn-success {
+  background: #6c5ce7;
+  transition: 0.5s;
+  width: 150px;
+}
+
+.predictionPanel .stats-container {
+  font-weight: bold;
+}
+.predictionPanel .stats-table {
+  display: flex;
+  justify-content: center;
+}
+
+.predictionPanel .stats-table tr {
+  border: 1px solid gray;
+  text-transform: capitalize;
+}
+
+.predictionPanel .stats-table .header-row th {
+  background-color: #dfe6e9;
+  text-align: center;
+}
+
+.predictionPanel .stats-table tr th {
+  padding: 8px 25px;
+}
+
+.predictionPanel .btn-success:hover {
+  background: #0984e3;
+  transition: 0.5s;
+}

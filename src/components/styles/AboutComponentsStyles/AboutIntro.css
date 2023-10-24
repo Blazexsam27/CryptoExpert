@@ -1,0 +1,15 @@
+.aboutIntroCardContainer {
+  text-align: center;
+}
+
+.aboutIntroCardContainer img {
+  width: 80px;
+  height: 80px;
+  margin: 30px;
+  cursor: pointer;
+}
+
+.aboutIntroDesc {
+  display: flex;
+  flex-direction: column;
+}

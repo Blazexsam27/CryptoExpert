@@ -1,0 +1,104 @@
+.analysisBackground {
+  background: rgb(0, 255, 140);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 255, 140, 1) 0%,
+    rgba(0, 228, 255, 1) 100%
+  );
+  height: 500px;
+}
+
+.analysisHeading {
+  display: flex;
+  position: relative;
+  padding-left: 297px;
+  justify-content: start;
+}
+
+.analysisContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.analysisContainer .summaryAndGraphContainer .summaryContainer {
+  display: flex;
+  justify-content: start;
+  background-color: white;
+  height: 100px;
+  width: 780px;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 26px;
+}
+
+.analysisContainer .summaryAndGraphContainer .graph-and-trending {
+  display: flex;
+}
+
+.summaryContainer div {
+  display: inline-flex;
+}
+
+.summaryContainer #cryptoprice {
+  padding: 3px 17px;
+}
+
+.summaryContainer h3 {
+  font-size: 36px;
+  color: black;
+  padding: 20px 15px 0 0px;
+  font-family: "PT Sans", sans-serif;
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 600;
+}
+
+.summaryContainer img {
+  width: 50px;
+  height: 50px;
+  margin: 17px 2px 0 16px;
+  box-shadow: 16px -9px 153px -63px rgba(0, 0, 0, 1);
+  -webkit-box-shadow: 16px -9px 153px -63px rgba(0, 0, 0, 1);
+}
+
+.filterBtnContainer {
+  display: inline-flex;
+  justify-content: end;
+  width: 100%;
+}
+
+.btn-group {
+  padding: 0 5px;
+  margin-top: -40px;
+  margin-right: -4px;
+}
+
+.btn-group button {
+  background-color: #01ff9e;
+  border: 2px solid white;
+  color: white;
+}
+.btn-group button:hover {
+  color: #14ff14;
+}
+
+.analysisGraphContainer {
+  background-color: white;
+  height: 375px;
+  width: 780px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 25px 10px 25px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.summaryAndGraphContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  position: relative;
+  left: -28px;
+}
