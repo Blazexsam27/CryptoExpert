@@ -5,7 +5,7 @@ import Navbar from "./components/widgets/Navbar";
 import Analysis from "./components/AnalysisComponents/Analysis";
 import News from "./components/NewsComponents/News";
 import Error from "./components/Error";
-
+// changnes
 function App() {
   return (
     <>
